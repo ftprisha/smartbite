@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:smartbite/widgets/dental_arch_widget.dart';
+import 'package:smartbite/models/scan_session.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen();
@@ -18,46 +20,23 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: Padding(
+        titleSpacing: 0,
+        title: Padding(
           padding: EdgeInsets.only(left: 16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'SmartBite',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF0B1F3A),
-                ),
-              ),
-              Text(
-                'Digital Occlusal Sensor',
-                style: TextStyle(
-                  fontSize: 10,
-                  color: Color(0xFF64748B),
-                ),
-              ),
+            children: [
+              Text('SmartBite', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF0B1F3A))),
+              Text('Digital Occlusal Sensor', style: TextStyle(fontSize: 9, color: Color(0xFF64748B))),
             ],
           ),
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.notifications_outlined),
-            onPressed: () {},
-          ),
+        actions: [
+          IconButton(icon: Icon(Icons.notifications_outlined, color: Color(0xFF64748B)), onPressed: () {}),
           Padding(
             padding: EdgeInsets.only(right: 16),
-            child: CircleAvatar(
-              radius: 16,
-              backgroundColor: Color(0xFF1A56DB),
-              child: Icon(
-                Icons.person,
-                color: Colors.white,
-                size: 16,
-              ),
-            ),
+            child: CircleAvatar(radius: 16, backgroundColor: Color(0xFF1A56DB), child: Icon(Icons.person, color: Colors.white, size: 16)),
           ),
         ],
       ),
@@ -139,6 +118,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ],
+                ),
+              ),
+              SizedBox(height: 16),
+              // Temporary DentalArchWidget for testing
+              SizedBox(
+                height: 200,
+                child: DentalArchWidget(
+                  teeth: List.generate(
+                    32,
+                    (i) => ToothData(
+                      fdiNumber: i + 11,
+                      forceN: (i * 30).toDouble(),
+                      isHighlighted: false,
+                    ),
+                  ),
+                  isLive: false,
                 ),
               ),
               SizedBox(height: 12),
