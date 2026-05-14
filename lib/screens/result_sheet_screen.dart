@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/scan_session.dart';
+import '../widgets/dental_arch_widget.dart';
 
 class ResultSheetScreen extends StatelessWidget {
   final ScanSession scanSession;

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:smartbite/widgets/dental_arch_widget.dart';
-import 'package:smartbite/models/scan_session.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen();
@@ -121,22 +119,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(height: 16),
-              // Temporary DentalArchWidget for testing
-              SizedBox(
-                height: 200,
-                child: DentalArchWidget(
-                  teeth: List.generate(
-                    32,
-                    (i) => ToothData(
-                      fdiNumber: i + 11,
-                      forceN: (i * 30).toDouble(),
-                      isHighlighted: false,
-                    ),
-                  ),
-                  isLive: false,
-                ),
-              ),
-              SizedBox(height: 12),
               Card(
                 child: Padding(
                   padding: EdgeInsets.all(16),

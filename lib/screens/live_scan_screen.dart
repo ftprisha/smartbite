@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import '../models/scan_session.dart';
 import '../providers/scan_provider.dart';
+import '../widgets/dental_arch_widget.dart';
 
 class LiveScanScreen extends StatefulWidget {
   final dynamic patient;
@@ -182,20 +183,13 @@ class _LiveScanScreenState extends State<LiveScanScreen> {
                         ),
                         child: Padding(
                           padding: EdgeInsets.all(16),
-                          child: SizedBox(
-                            height: 280,
-                            child: Container(
-                              color: Color(0xFFF0F9FF),
-                              child: Center(
-                                child: Text(
-                                  'Dental Arch Visualization',
-                                  style: TextStyle(
-                                    color: Color(0xFF0B1F3A),
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                            ),
+                          child: Consumer<ScanProvider>(
+                            builder: (context, scanProvider, child) {
+                              return DentalArchWidget(
+                                teeth: scanProvider.currentTeeth,
+                                isLive: true,
+                              );
+                            },
                           ),
                         ),
                       ),

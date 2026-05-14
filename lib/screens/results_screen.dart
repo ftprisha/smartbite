@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import '../models/scan_session.dart';
 import '../providers/history_provider.dart';
+import '../widgets/dental_arch_widget.dart';
 
 class ResultsScreen extends StatefulWidget {
   final ScanSession scanSession;
@@ -97,20 +98,9 @@ class _ResultsScreenState extends State<ResultsScreen> {
                 ],
               ),
               SizedBox(height: 16),
-              Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  color: Color(0xFFF0F9FF),
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Center(
-                  child: Text(
-                    'Dental Arch Visualization',
-                    style: TextStyle(
-                      color: Color(0xFF64748B),
-                    ),
-                  ),
-                ),
+              DentalArchWidget(
+                teeth: widget.scanSession.teeth,
+                isLive: false,
               ),
               SizedBox(height: 16),
               Card(
